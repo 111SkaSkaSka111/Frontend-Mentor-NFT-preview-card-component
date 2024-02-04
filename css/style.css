@@ -40,12 +40,17 @@
     content: "";
     inset: 0;
     border-radius: inherit;
-    background: conic-gradient(from var(--gradient-rotate), chartreuse, purple, aqua, purple, chartreuse);
-    animation: rotate 10s linear infinite;
+    animation: rotate 15s linear infinite;
+}
+
+.box::after {
+    background: repeating-conic-gradient(from var(--gradient-rotate), aqua 0%, aqua 5%, transparent 5%, transparent 40%, aqua 50%),
+        repeating-conic-gradient(from calc(var(--gradient-rotate) + 90deg), purple 0%, purple 5%, transparent 5%, transparent 40%, purple 50%);
 }
 
 .box::before {
     filter: blur(1rem);
+    background: conic-gradient(from var(--gradient-rotate), aqua, purple, aqua, purple, aqua);
 }
 
 @keyframes rotate {
@@ -78,6 +83,7 @@
         cursor: pointer;
         border: 1px solid #eeeeee60;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     & .image-equil::after,
@@ -85,9 +91,9 @@
         position: absolute;
         content: "";
         inset: 0;
-        border-radius: inherit;
+        border-radius: 50%;
         scale: 0;
-        transition: all 0.5s;
+        transition: all 0.8s ease-out;
     }
 
     & .image-equil::after {
@@ -103,6 +109,8 @@
     & .image-equil:hover::after,
     .image-equil:hover::before {
         scale: 1;
+        transform: rotate(360deg);
+        border-radius: 10px;
     }
 
     & h1 {
