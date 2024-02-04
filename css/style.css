@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Outfit", sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #0d192b;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 300px;
+    aspect-ratio: 1/1.8;
+    background-color: #0d192b;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+}
+
+@property --gradient-rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.box::before,
+.box::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border-radius: inherit;
+    background: conic-gradient(from var(--gradient-rotate), chartreuse, purple, aqua, purple, chartreuse);
+    animation: rotate 10s linear infinite;
+}
+
+.box::before {
+    filter: blur(1rem);
+}
+
+@keyframes rotate {
+    0% {
+        --gradient-rotate: 0deg;
+    }
+    100% {
+        --gradient-rotate: 360deg;
+    }
+}
+
+.card {
+    position: absolute;
+    content: "";
+    background-color: #14253d;
+    inset: 5px;
+    border-radius: 15px;
+    z-index: 99;
+    padding: 15px;
+    color: white;
+    /* display: none; */
+
+    & .image-equil {
+        width: 100%;
+        height: 50%;
+        border-radius: 10px;
+        position: relative;
+        background: url(../images/image-equilibrium.jpg);
+        background-size: cover;
+        cursor: pointer;
+        border: 1px solid #eeeeee60;
+        box-sizing: border-box;
+    }
+
+    & .image-equil::after,
+    .image-equil::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+        border-radius: inherit;
+        scale: 0;
+        transition: all 0.5s;
+    }
+
+    & .image-equil::after {
+        background: url(../images/icon-view.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    & .image-equil::before {
+        background-color: #00ffff50;
+    }
+
+    & .image-equil:hover::after,
+    .image-equil:hover::before {
+        scale: 1;
+    }
+
+    & h1 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        cursor: pointer;
+    }
+
+    & .tag {
+        color: #8bacda;
+        margin: 20px 0;
+    }
+
+    & .current::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #2f415b;
+        bottom: -25px;
+    }
+
+    & .current {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        & .currency {
+            position: relative;
+            padding-left: 25px;
+            color: aqua;
+        }
+
+        & .currency::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            background: url(../images/icon-ethereum.svg);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 12px;
+        }
+
+        & .days {
+            color: #8bacda;
+            position: relative;
+        }
+
+        & .days::before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            background: url(../images/icon-clock.svg);
+            width: 17px;
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+        }
+    }
+
+    & .desc {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 50px;
+
+        & .avatar {
+            width: 40px;
+        }
+
+        & p {
+            color: #8bacda;
+        }
+
+        & span {
+            color: white;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    }
+}
+
+h1:hover,
+.desc span:hover {
+    color: aqua;
+}
