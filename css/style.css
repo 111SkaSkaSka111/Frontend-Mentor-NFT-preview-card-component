@@ -17,8 +17,8 @@
 }
 
 .box {
-    width: 300px;
-    aspect-ratio: 1/1.8;
+    width: 350px;
+    aspect-ratio: 1/1.5;
     background-color: #0d192b;
     border-radius: 20px;
     position: relative;
@@ -40,17 +40,21 @@
     content: "";
     inset: 0;
     border-radius: inherit;
-    animation: rotate 15s linear infinite;
+    background: conic-gradient(from var(--gradient-rotate), aqua, purple, aqua, purple, aqua);
+    animation: rotate 10s linear infinite;
 }
 
-.box::after {
+/* .box::after {
     background: repeating-conic-gradient(from var(--gradient-rotate), aqua 0%, aqua 5%, transparent 5%, transparent 40%, aqua 50%),
-        repeating-conic-gradient(from calc(var(--gradient-rotate) + 90deg), purple 0%, purple 5%, transparent 5%, transparent 40%, purple 50%);
-}
+        repeating-conic-gradient(from calc(var(--gradient-rotate) + 45deg), purple 0%, purple 5%, transparent 5%, transparent 40%, purple 50%),
+        repeating-conic-gradient(from calc(var(--gradient-rotate) + 135deg), purple 0%, purple 5%, transparent 5%, transparent 40%, purple 50%),
+        repeating-conic-gradient(from calc(var(--gradient-rotate) + 90deg), aqua 0%, aqua 5%, transparent 5%, transparent 40%, aqua 50%);
+} */
+
 
 .box::before {
     filter: blur(1rem);
-    background: conic-gradient(from var(--gradient-rotate), aqua, purple, aqua, purple, aqua);
+    /* background: conic-gradient(from var(--gradient-rotate), aqua, purple, aqua, purple, aqua); */
 }
 
 @keyframes rotate {
@@ -80,6 +84,7 @@
         position: relative;
         background: url(../images/image-equilibrium.jpg);
         background-size: cover;
+        background-position: center;
         cursor: pointer;
         border: 1px solid #eeeeee60;
         box-sizing: border-box;
